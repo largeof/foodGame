@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Food Game</title>
+<script type="text/javascript">
+
+    var globPlayerCount, globPlacesPerPlayer;
+    var names = []; //names.push(string)
+    nameCounter = 1;
+
+    function initialSubmit(){
+        var welcomeMsg = document.getElementById('welcome');
+        var playerAmount = document.getElementById('playerAmount');
+        var choicesPer = document.getElementById('choicesPer')
+        var initalMenu = document.getElementById('initialMenu');
+        var next = document.getElementById('next');
+        var nameDiv = document.getElementById('nameDiv');
+
+        globPlayerCount = playerAmount;
+        globPlacesPerPlayer = choicesPer;
+
+        initialMenu.style.display = "none";
+        next.style.display = "block";
+        nameDiv.style.display = "block";
+
+ 
+        welcomeMsg.innerHTML += playerAmount.value+" players.<br/>";
+        welcomeMsg.innerHTML += choicesPer.value+" choices per player.<br/>";
+        welcomeMsg.innerHTML += "so there will be  "+choicesPer.value*playerAmount.value+" places total.<br/>";
+        
+    }
+
+    function nameSubmit(){
+        var nameInput = document.getElementById('nameInput');
+
+    }
+
+
+ 
+</script>
+
+<style>
+
+    html, body
+    {
+        margin: 0;
+        padding: 0;
+    }
+
+    div {
+        text-align: center;
+        line-height: 1.6;
+    }
+    #next {
+        display: none;
+    }
+    #nameDiv {
+        display: none;
+    }
+    #fatDiv {
+        margin: auto;
+        padding: 0;
+        background-color: lightblue;
+        width: 50%;
+        padding: 0%;
+        height: 100vh;
+    }
+    #padDiv {
+        padding: 10%;
+    }
+
+</style>
+ 
+</head>
+<body>
+    <div id="fatDiv">
+
+        <div id="padDiv">
+
+            <div id="start">
+            <form id="initialMenu">
+                Player amount: <input type="text" id="playerAmount"/><br/>
+                Choices per player: <input type="text" id="choicesPer"/><br/>
+            <input type="button" value="Submit" onclick="initialSubmit();"/>
+            </form>
+        </div>
+
+        <div id="next">
+            <p id="welcome"> wow, austin... you're sick <br /> </p>
+        </div>
+
+        <div id="nameDiv">
+            <p>  </p>
+
+
+        </div>
+    </div>
+</body>
+</html>
