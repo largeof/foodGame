@@ -2,41 +2,43 @@ var globPlayerCount, globPlacesPerPlayer;
 var names = []; //names.push(string)
 nameCounter = 1;
 
-function initialSubmit(){
-    var welcomeMsg = document.getElementById('welcome');
+function initialSubmit() //this is the button that submits player amount and choices per
+{
+    //sets variables for elements i will be editing
+    var infoMsg = document.getElementById('info');
     var playerAmount = document.getElementById('playerAmount');
     var choicesPer = document.getElementById('choicesPer')
-    var initalMenu = document.getElementById('initialMenu');
     var next = document.getElementById('next');
     var nameDiv = document.getElementById('nameDiv');
 
+    //set my global variables to the stuff user entered
     globPlayerCount = playerAmount;
     globPlacesPerPlayer = choicesPer;
 
+    //hide initialMenu and show name entering screen
     initialMenu.style.display = "none";
     next.style.display = "block";
     nameDiv.style.display = "block";
 
-        welcomeMsg.innerHTML += globPlayerCount.value+" players.<br/>";
-        welcomeMsg.innerHTML += globPlacesPerPlayer.value+" choices per player.<br/>";
+    //information entered by player
+    infoMsg.innerHTML += globPlayerCount.value+" players.<br/>";
+    info.innerHTML += globPlacesPerPlayer.value+" choices per player.<br/>";
+    infoMsg.innerHTML += "so there will be  "+choicesPer.value*playerAmount.value+" places total.<br/>";
 
-        welcomeMsg.innerHTML += "so there will be  "+choicesPer.value*playerAmount.value+" places total.<br/>";
-
-        //make input for every player name
-        var nameForm = document.getElementById('nameForm');
-
-        let i;
-        for (i = 1; i<=globPlayerCount.value; i++)
-        {
-            //nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="Namebox' + i + '"/> <br />';
-            nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="Namebox"' + i + '"/> <br /><br />';
-        }
-
-        nameForm.innerHTML += '<input type="button" value="SUBMIT" onclick="nameSubmit();"/>'
-
-        
+    //make input for every player name
+    var nameForm = document.getElementById('nameForm');
+    for (let i = 1; i<=globPlayerCount.value; i++)
+    {
+        //makes an input box for every name with the id = nameBox[i]
+        nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="nameBox' + i + '"/> <br />';
     }
 
-    function nameSubmit(){
+    //add button to submit name form at the end!
+    nameForm.innerHTML += '<input type="button" value="SUBMIT" onclick="nameSubmit();"/>'
+    
+}
 
-    }
+function nameSubmit()
+{
+    //this function will be called when name submit is hit
+}
