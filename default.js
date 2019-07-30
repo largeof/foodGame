@@ -29,10 +29,10 @@ function initialSubmit(){
         for (i = 1; i<=globPlayerCount.value; i++)
         {
             //nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="Namebox' + i + '"/> <br />';
-            nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="Namebox' + i + '"/> <br />';
+            nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="Namebox"' + i + '"/> <br /><br />';
         }
 
-        nameForm.innerHTML += '<input type="button" value="Submit" onclick="nameSubmit();"/>'
+        nameForm.innerHTML += '<input type="button" value="SUBMIT" onclick="nameSubmit();"/>'
 
         
     }

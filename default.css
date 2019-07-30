@@ -4,14 +4,28 @@ html, body {
     font-size: 15px;
     font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 }
+input[type="text"] {
+    font-size: 12px;
+    padding: 5px 10px;
+    border: 1px solid lightgray;
+    transition: 0.5s;
+    border-radius: 4px;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;      
+}
+input[type="text"]:hover{
+    border-color: black;    
+}
+/*this first box class was made for numeric input boxes*/
+.firstBox {
+    width: 3%;
+}
 input[type="button"] {
     font-size: 12px;
     width: 30%;
     padding: 10px 15px;
-    border: 1px 1px 1px 1px;
-    border-color: lightgray;
+    border: 1px solid lightgray;
     border-radius: 4px;
-    box-shadow: 5px;
+    transition: 0.5s;
     font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 }
 input[type="button"]:hover {
@@ -23,9 +37,11 @@ div {
 }
 #next {
     display: none;
+    font-size: 0px;
 }
 #nameDiv {
     display: none;
+    font-size: 15px;
 }
 #fatDiv {
     margin: auto;
@@ -36,6 +52,7 @@ div {
 }
 #padDiv {
     padding: 10%;
+    font-size: 15px;
 }
 #foodTitle {
     font-size: 40px;
