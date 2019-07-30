@@ -29,8 +29,8 @@ function initialSubmit() //this is the button that submits player amount and cho
     var nameForm = document.getElementById('nameForm');
     for (let i = 1; i<=globPlayerCount.value; i++)
     {
-        //makes an input box for every name with the id = Namebox[i]
-        nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="Namebox' + i + '"/> <br />';
+        //makes an input box for every name with the id = nameBox[i]
+        nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="nameBox' + i + '"/> <br />';
     }
 
     //add button to submit name form at the end!
