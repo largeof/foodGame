@@ -41,4 +41,5 @@ function initialSubmit() //this is the button that submits player amount and cho
 function nameSubmit()
 {
     //this function will be called when name submit is hit
+    var nameSpot = document.getElementById('nameSpot');
 }
