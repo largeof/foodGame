@@ -1,6 +1,8 @@
 var globPlayerCount, globPlacesPerPlayer;
 var names = []; //names.push(string) to add
+var places = []; //same as above duh
 nameCounter = 1;
+placeCounter = 1;
 
 function initialSubmit() //this is the button that submits player amount and choices per
 {
@@ -31,6 +33,7 @@ function initialSubmit() //this is the button that submits player amount and cho
 
     //add button to submit name form at the end!
     nameForm.innerHTML += '<input type="button" value="SUBMIT" onclick="nameSubmit();"/>'
+
     
 }
 
@@ -39,6 +42,9 @@ function nameSubmit()
     //this function will be called when name submit is hit
     var nameSpot = document.getElementById('nameSpot');
     var nameForm = document.getElementById('nameForm');
+    var placeForm = document.getElementById('placeForm');
+    var placeSpot = document.getElementById('placeSpot');
+    var placePrompt = document.getElementById('placeEnterDiv');
 
     for (let i = 1; i<=globPlayerCount; i++)
     {
@@ -46,11 +52,40 @@ function nameSubmit()
         names.push(document.getElementById('nameBox'+i).value);
         
         //list names in nameSpot
-        nameSpot.innerHTML += i + '. ' + document.getElementById('nameBox'+i).value + '<br/>';
+        nameSpot.innerHTML += i + '. ' + document.getElementById('nameBox'+i).value + '<br>';
     }
 
     //hide old nameform
     nameForm.style.display = "none";
 
+    //unhide placeform and placespot
+    placeForm.style.display = "block";
+    placeSpot.style.display = "block";
 
+    //set placePrompt
+    placePrompt.innerHTML = names[0] + "'s turn: " + '<input type="text" id="placeInput"/> <br>';
+
+    //show nameSpot
+    document.getElementById('nameSpot').style.display = "block";
+}
+
+function placeSubmit()
+{
+    var placeSpot = document.getElementById('placeSpot');
+    var placeForm = document.getElementById('placeForm');
+    var placePrompt = document.getElementById('placeEnterDiv');
+    var placeInput = document.getElementById('placeInput');
+    
+    //simply append to placeSpot
+    placeSpot.innerHTML += placeCounter + '. ' + placeInput.value + '<br>';
+    //set placePrompt
+    placePrompt.innerHTML = names[placeCounter%globPlayerCount] + "'s turn: " + '<input type="text" id="placeInput"/> <br>';
+
+    placeCounter++;
+    
+    if (placeCounter > globPlacesPerPlayer*globPlayerCount)
+    {
+        //append & hide form because done with places
+        placeForm.style.display = "none";
+    }
 }
