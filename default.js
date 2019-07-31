@@ -20,6 +20,7 @@ function initialSubmit() //this is the button that submits player amount and cho
     nameDiv.style.display = "block";
     foodTitle.innerHTML = "Food Game";
 
+
     //make input for every player name
     var nameForm = document.getElementById('nameForm');
     for (let i = 1; i<=globPlayerCount; i++)
