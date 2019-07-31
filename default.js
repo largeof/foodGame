@@ -1,5 +1,5 @@
 var globPlayerCount, globPlacesPerPlayer;
-var names = []; //names.push(string)
+var names = []; //names.push(string) to add
 nameCounter = 1;
 
 function initialSubmit() //this is the button that submits player amount and choices per
@@ -12,25 +12,20 @@ function initialSubmit() //this is the button that submits player amount and cho
     var nameDiv = document.getElementById('nameDiv');
 
     //set my global variables to the stuff user entered
-    globPlayerCount = playerAmount;
-    globPlacesPerPlayer = choicesPer;
+    globPlayerCount = playerAmount.value;
+    globPlacesPerPlayer = choicesPer.value;
 
-    //hide initialMenu and show name entering screen
+    //hide initialMenu, show name entering screen, and change title
     initialMenu.style.display = "none";
-    next.style.display = "block";
     nameDiv.style.display = "block";
-
-    //information entered by player
-    infoMsg.innerHTML += globPlayerCount.value+" players.<br/>";
-    info.innerHTML += globPlacesPerPlayer.value+" choices per player.<br/>";
-    infoMsg.innerHTML += "so there will be  "+choicesPer.value*playerAmount.value+" places total.<br/>";
+    foodTitle.innerHTML = "Food Game";
 
     //make input for every player name
     var nameForm = document.getElementById('nameForm');
-    for (let i = 1; i<=globPlayerCount.value; i++)
+    for (let i = 1; i<=globPlayerCount; i++)
     {
         //makes an input box for every name with the id = nameBox[i]
-        nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="nameBox' + i + '"/> <br />';
+        nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="nameBox' + i + '"/> <br><br>';
     }
 
     //add button to submit name form at the end!
@@ -41,4 +36,20 @@ function initialSubmit() //this is the button that submits player amount and cho
 function nameSubmit()
 {
     //this function will be called when name submit is hit
+    var nameSpot = document.getElementById('nameSpot');
+    var nameForm = document.getElementById('nameForm');
+
+    for (let i = 1; i<=globPlayerCount; i++)
+    {
+        //adds names to array
+        names.push(document.getElementById('nameBox'+i).value);
+        
+        //list names in nameSpot
+        nameSpot.innerHTML += i + '. ' + document.getElementById('nameBox'+i).value + '<br/>';
+    }
+
+    //hide old nameform
+    nameForm.style.display = "none";
+
+
 }
