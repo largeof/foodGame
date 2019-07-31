@@ -4,13 +4,33 @@ html, body {
     font-size: 15px;
     font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 }
+#main {
+    margin: auto;
+    padding: 0;
+    width: 25%;
+}
+div {
+    text-align: center;
+    line-height: 1.6;
+}
+p {
+    margin: 0;
+}
+#initialMenu {
+    font-size: 15px;
+    margin: 0;
+    border-top: 1px solid lightgray;
+}
+#foodTitle {
+    font-size: 30px;
+}
 input[type="text"] {
     font-size: 12px;
     padding: 5px 10px;
     border: 1px solid lightgray;
     transition: 0.5s;
     border-radius: 4px;
-    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;      
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;   
 }
 input[type="text"]:hover{
     border-color: black;    
@@ -21,40 +41,19 @@ input[type="text"]:hover{
 }
 input[type="button"] {
     font-size: 12px;
-    width: 30%;
+    width: 15%;
     padding: 10px 15px;
     border: 1px solid lightgray;
     border-radius: 4px;
     transition: 0.5s;
+    background-color: white;
     font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 }
 input[type="button"]:hover {
     border-color: black;
 }
-div {
-    text-align: center;
-    line-height: 1.6;
-}
-#next {
-    display: none;
-    font-size: 0px;
-}
 #nameDiv {
     display: none;
     font-size: 15px;
-}
-#fatDiv {
-    margin: auto;
-    padding: 0;
-    width: 50%;
-    padding: 0%;
-    height: 100vh;
-}
-#padDiv {
-    padding: 10%;
-    font-size: 15px;
-}
-#foodTitle {
-    font-size: 40px;
-    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
 }
