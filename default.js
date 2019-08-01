@@ -3,6 +3,7 @@ var names = []; //names.push(string) to add
 var places = []; //same as above duh
 nameCounter = 1;
 placeCounter = 1;
+banAmount = 0;
 
 function initialSubmit() //this is the button that submits player amount and choices per
 {
@@ -76,8 +77,12 @@ function placeSubmit()
     var placePrompt = document.getElementById('placeEnterDiv');
     var placeInput = document.getElementById('placeInput');
     
-    //simply append to placeSpot
-    placeSpot.innerHTML += placeCounter + '. ' + placeInput.value + '<br>';
+    //create new p line with place
+    var newPlace = document.createElement("P");
+    newPlace.id = "place"+placeCounter; //give it the id place[count]
+    newPlace.innerHTML = placeCounter + '. ' + placeInput.value;
+
+    placeSpot.appendChild(newPlace); //add p line
     //set placePrompt
     placePrompt.innerHTML = names[placeCounter%globPlayerCount] + "'s turn: " + '<input type="text" id="placeInput"/> <br>';
 
@@ -87,5 +92,22 @@ function placeSubmit()
     {
         //append & hide form because done with places
         placeForm.style.display = "none";
+
+        //put buttons next to all the places
+        placeCounter=1;
+        for (placeCounter; placeCounter<=globPlacesPerPlayer*globPlayerCount; placeCounter++)
+        {
+            var newButton = '<button id = trash' + placeCounter + ' onclick=trashButton(' +placeCounter+ ');> TRASH </button>'
+            //add class to above to style it! (add trash can pic)
+
+            document.getElementById('place'+placeCounter).innerHTML+=newButton; // adds button to line
+        }
     }
+}
+
+function trashButton(placeCount)
+{
+    document.getElementById("trash"+placeCount).style.display="none";
+    
+    document.getElementById("place"+placeCount).innerHTML = '<s>' + document.getElementById("place"+placeCount).innerHTML + '<s>';
 }
