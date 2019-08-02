@@ -97,8 +97,8 @@ function placeSubmit()
         placeCounter=1;
         for (placeCounter; placeCounter<=globPlacesPerPlayer*globPlayerCount; placeCounter++)
         {
-            var newButton = '<button id = trash' + placeCounter + ' onclick=trashButton(' +placeCounter+ ');> TRASH </button>'
-            //add class to above to style it! (add trash can pic)
+            var newButton = '<form id= trashForm' + placeCounter + ' style="display:inline;"> <input type="image" id = trash' + placeCounter + ' alt="trash" src="trash.png" height=19.6px width=13.4px onclick="trashButton(' +placeCounter+ ');"/> </form>'
+            //changed it to input because no one uses just buttons hehe
 
             document.getElementById('place'+placeCounter).innerHTML+=newButton; // adds button to line
         }
@@ -107,7 +107,7 @@ function placeSubmit()
 
 function trashButton(placeCount)
 {
-    document.getElementById("trash"+placeCount).style.display="none";
+    document.getElementById("trashForm"+placeCount).style.display="none";
     
     document.getElementById("place"+placeCount).innerHTML = '<s>' + document.getElementById("place"+placeCount).innerHTML + '<s>';
 }
