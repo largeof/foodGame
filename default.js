@@ -5,16 +5,6 @@ nameCounter = 1;
 placeCounter = 1;
 banAmount = 0;
 
-function enterSubmit(textBox, pressedBtn) { //this will allow you to press enter as submit
-    var input = document.getElementById(textBox); //textBox is the box of text that will activate the enter
-    input.addEventListener("keyup", function(event) {
-      if (event.keyCode === 13) {
-       event.preventDefault();
-       document.getElementById(pressedBtn).click(); //pressedBtn is the button pressed
-      }
-    });
-}
-
 function initialSubmit() //this is the button that submits player amount and choices per
 {
     //sets variables for elements i will be editing
@@ -43,9 +33,9 @@ function initialSubmit() //this is the button that submits player amount and cho
     }
 
     //add button to submit name form at the end!
-    nameForm.innerHTML += '<input type="button" value="SUBMIT" id="playerBtn" onclick="nameSubmit();"/>'
+    nameForm.innerHTML += '<input type="button" value="SUBMIT" onclick="nameSubmit();"/>'
 
-    enterSubmit('nameBox'+globPlayerCount+'', 'playerBtn');
+    
 }
 
 function nameSubmit()
@@ -107,7 +97,7 @@ function placeSubmit()
         placeCounter=1;
         for (placeCounter; placeCounter<=globPlacesPerPlayer*globPlayerCount; placeCounter++)
         {
-            var newButton = '<form id= trashForm class=trashClass style="display: inline;"' + placeCounter + '> <input type="image" id = trash' + placeCounter + ' alt="trash" src="trash.png" height=19.6px width=13.4px onclick="trashButton(' +placeCounter+ ');"/> </form>'
+            var newButton = '<form id= trashForm' + placeCounter + ' style="display:inline;"> <input type="image" id = trash' + placeCounter + ' alt="trash" src="trash.png" height=19.6px width=13.4px onclick="trashButton(' +placeCounter+ ');"/> </form>'
             //changed it to input because no one uses just buttons hehe
 
             document.getElementById('place'+placeCounter).innerHTML+=newButton; // adds button to line
