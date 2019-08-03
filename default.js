@@ -42,6 +42,8 @@ function initialSubmit() //this is the button that submits player amount and cho
         nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="nameBox' + i + '"/> <br><br>';
     }
 
+    document.getElementById("nameBox1").select();
+    
     //add button to submit name form at the end!
     nameForm.innerHTML += '<input type="button" value="SUBMIT" id="playerBtn" onclick="nameSubmit();"/>'
 
@@ -97,6 +99,8 @@ function placeSubmit()
     placePrompt.innerHTML = names[placeCounter%globPlayerCount] + "'s turn: " + '<input type="text" id="placeInput"/> <br>';
 
     placeCounter++;
+    
+    document.getElementById("placeInput").select();
     
     if (placeCounter > globPlacesPerPlayer*globPlayerCount)
     {
