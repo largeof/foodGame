@@ -5,6 +5,23 @@ nameCounter = 1;
 placeCounter = 1;
 banAmount = 0;
 
+function itsLoaded()
+{
+    //select playerAmount
+    document.getElementById("playerAmount").focus();
+    document.getElementById("playerAmount").select();
+}
+
+function enterSubmit(textBox, pressedBtn) { //this will allow you to press enter as submit
+    var input = document.getElementById(textBox); //textBox is the box of text that will activate the enter
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+       event.preventDefault();
+       document.getElementById(pressedBtn).click(); //pressedBtn is the button pressed
+      }
+    });
+}
+
 function initialSubmit() //this is the button that submits player amount and choices per
 {
     //sets variables for elements i will be editing
@@ -31,11 +48,15 @@ function initialSubmit() //this is the button that submits player amount and cho
         //makes an input box for every name with the id = nameBox[i]
         nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="nameBox' + i + '"/> <br><br>';
     }
-
+    
     //add button to submit name form at the end!
     nameForm.innerHTML += '<input type="button" value="SUBMIT" onclick="nameSubmit();"/>'
 
-    
+    enterSubmit('nameBox'+globPlayerCount+'', 'playerBtn');
+
+    document.getElementById("nameBox1").focus();
+    document.getElementById("nameBox1").select();
+
 }
 
 function nameSubmit()
@@ -68,10 +89,15 @@ function nameSubmit()
 
     //show nameSpot
     document.getElementById('nameSpot').style.display = "block";
+
+    //select placeInput
+    document.getElementById("placeInput").focus();
+    document.getElementById("placeInput").select();
 }
 
 function placeSubmit()
 {
+
     var placeSpot = document.getElementById('placeSpot');
     var placeForm = document.getElementById('placeForm');
     var placePrompt = document.getElementById('placeEnterDiv');
@@ -87,6 +113,10 @@ function placeSubmit()
     placePrompt.innerHTML = names[placeCounter%globPlayerCount] + "'s turn: " + '<input type="text" id="placeInput"/> <br>';
 
     placeCounter++;
+
+    //select place input
+    document.getElementById("placeInput").focus();
+    document.getElementById("placeInput").select();
     
     if (placeCounter > globPlacesPerPlayer*globPlayerCount)
     {
