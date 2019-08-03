@@ -5,7 +5,6 @@ nameCounter = 1;
 placeCounter = 1;
 banAmount = 0;
 
-
 function itsLoaded()
 {
     //select playerAmount
@@ -51,12 +50,13 @@ function initialSubmit() //this is the button that submits player amount and cho
     }
     
     //add button to submit name form at the end!
-    nameForm.innerHTML += '<input type="button" value="SUBMIT" id="playerBtn" onclick="nameSubmit();"/>'
+    nameForm.innerHTML += '<input type="button" value="SUBMIT" onclick="nameSubmit();"/>'
 
     enterSubmit('nameBox'+globPlayerCount+'', 'playerBtn');
 
     document.getElementById("nameBox1").focus();
     document.getElementById("nameBox1").select();
+
 }
 
 function nameSubmit()
@@ -127,7 +127,7 @@ function placeSubmit()
         placeCounter=1;
         for (placeCounter; placeCounter<=globPlacesPerPlayer*globPlayerCount; placeCounter++)
         {
-            var newButton = '<form id= trashForm class=trashClass style="display: inline;"' + placeCounter + '> <input type="image" id = trash' + placeCounter + ' alt="trash" src="trash.png" height=19.6px width=13.4px onclick="trashButton(' +placeCounter+ ');"/> </form>'
+            var newButton = '<form id= trashForm' + placeCounter + ' style="display:inline;"> <input type="image" id = trash' + placeCounter + ' alt="trash" src="trash.png" height=19.6px width=13.4px onclick="trashButton(' +placeCounter+ ');"/> </form>'
             //changed it to input because no one uses just buttons hehe
 
             document.getElementById('place'+placeCounter).innerHTML+=newButton; // adds button to line
