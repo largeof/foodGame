@@ -72,9 +72,13 @@ function nameSubmit()
     {
         //adds names to array
         names.push(document.getElementById('nameBox'+i).value);
-        
-        //list names in nameSpot
-        nameSpot.innerHTML += i + '. ' + document.getElementById('nameBox'+i).value + '<br>';
+
+        //add names to list on HTML
+        var nameP = document.createElement("P");
+        nameP.innerHTML = i + '. ' + document.getElementById('nameBox'+i).value + ' <br>';
+        nameP.id = "nameP"+i;
+
+        nameSpot.appendChild(nameP);
     }
 
     //hide old nameform
@@ -102,11 +106,14 @@ function placeSubmit()
     var placeForm = document.getElementById('placeForm');
     var placePrompt = document.getElementById('placeEnterDiv');
     var placeInput = document.getElementById('placeInput');
+
+    //add to places array!
+    places.push(placeInput.value);
     
     //create new p line with place
     var newPlace = document.createElement("P");
     newPlace.id = "place"+placeCounter; //give it the id place[count]
-    newPlace.innerHTML = placeCounter + '. ' + placeInput.value;
+    newPlace.innerHTML = placeCounter + '. ' + placeInput.value + ' ';
 
     placeSpot.appendChild(newPlace); //add p line
     //set placePrompt
@@ -127,17 +134,82 @@ function placeSubmit()
         placeCounter=1;
         for (placeCounter; placeCounter<=globPlacesPerPlayer*globPlayerCount; placeCounter++)
         {
-            var newButton = '<form class = trashClass id= trashForm ' + placeCounter + '> <input type="image" id = trash' + placeCounter + ' alt="trash" src="trash.png" height=19.6px width=13.4px onclick="trashButton(' +placeCounter+ ');"/> </form>'
+            var newButton = '<input type="image" id = trash' + placeCounter + ' alt="trash" src="trash.png" height=19.6px width=13.4px onclick="trashButton(' +placeCounter+ ');"/> </input>'
             //changed it to input because no one uses just buttons hehe
 
             document.getElementById('place'+placeCounter).innerHTML+=newButton; // adds button to line
+        }
+        
+        //start ban pointer
+        setBanWording(1);
+
+    }
+}
+
+function setBanWording(newBanner)
+{
+    console.log(names);
+    for (let i=1; i<=globPlayerCount; i++)
+    {
+        if (i==newBanner)
+        {
+            document.getElementById("nameP"+i).innerHTML = i + ". " + names[i-1] + " <= Currently banning";
+        }
+        else
+        {
+            document.getElementById("nameP"+i).innerHTML = i + ". " + names[i-1];
         }
     }
 }
 
 function trashButton(placeCount)
 {
-    document.getElementById("trashForm"+placeCount).style.display="none";
+    banAmount++;
+
+    if (banAmount < (globPlacesPerPlayer*globPlayerCount - 1))
+    {
+        document.getElementById("trash"+placeCount).style.display="none";
     
-    document.getElementById("place"+placeCount).innerHTML = '<s>' + document.getElementById("place"+placeCount).innerHTML + '<s>';
+        document.getElementById("place"+placeCount).innerHTML = '<s>' + document.getElementById("place"+placeCount).innerHTML + '<s>';
+
+        let bansLeft = Math.floor(banAmount/globPlayerCount);
+
+
+        console.log(banAmount);
+        console.log(globPlayerCount);
+        setBanWording((banAmount%globPlayerCount)+1);
+    }
+
+    else
+    {
+        document.getElementById("trash"+placeCount).style.display="none";
+    
+        document.getElementById("place"+placeCount).innerHTML = '<s>' + document.getElementById("place"+placeCount).innerHTML + '<s>';
+
+
+        let finalWinner;
+        //hide all trash bins (this will hide the last one)
+        for (let i = 1; i<=globPlacesPerPlayer*globPlayerCount; i++)
+        {
+            if (document.getElementById("trash"+i).style.display!="none")
+            {
+                //we have found winner!
+                document.getElementById("place"+i).innerHTML = '<b>' + document.getElementById('place'+i).innerHTML + '</b>'
+                finalWinner=i;
+                document.getElementById("trash"+i).style.display="none";
+
+            }
+        }
+        //display the WINNER
+        let winText = document.createElement("P");
+        //0 index so finalWinner-1
+        winText.innerHTML = 'The winning place is <b>' + places[finalWinner-1] + '</b>!';
+
+        document.getElementById('placeSpot').appendChild(winText);
+
+        //remove currently banning point
+        setBanWording(-1);
+    }
+
+
 }
