@@ -50,7 +50,7 @@ function initialSubmit() //this is the button that submits player amount and cho
     }
     
     //add button to submit name form at the end!
-    nameForm.innerHTML += '<input type="button" id="playerBtn" value="SUBMIT" onclick="nameSubmit();"/>'
+    nameForm.innerHTML += '<input type="button" id=playerBtn value="SUBMIT" onclick="nameSubmit();"/>'
 
     enterSubmit('nameBox'+globPlayerCount+'', 'playerBtn');
 
