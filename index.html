@@ -15,8 +15,12 @@
             <br>
             Player amount: <input type="text" class="firstBox" id="playerAmount"/><br><br>
             Choices per player: <input type="text" class="firstBox" id="choicesPer"/><br><br>
-            <input type="button" value="SUBMIT" onclick="initialSubmit();"/>
+            <input type="button" value="SUBMIT" id="firstBtn" onclick="initialSubmit();"/>
         </form>
+
+        <script>
+            enterSubmit('choicesPer', 'firstBtn');
+        </script>
 
         <div id="nameDiv">
             <form id="nameForm">
@@ -25,22 +29,16 @@
         </div>
 
         <div id="nameSpot">
-            Players: <br>
+            <br> Players: <br><br>
         </div>
 
         <div id="placeSpot">
-            Places: <br>
+            <br> Places: <br><br>
         </div>
 
-        
-        <form id="placeForm">
-                <div id="placeEnterDiv">
-                    <input type="text" id="placeInput"/> <br>
-                </div>
-            <input type="button" value="SUBMIT" onclick="placeSubmit();"/>
+        <!-- onkeypress will avoid refreshing page -->
+        <form id="placeForm" onkeypress="return event.keyCode != 13">
         </form>
-
-
 
     </div>
 </body>

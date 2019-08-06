@@ -65,6 +65,7 @@ input[type="button"]:hover {
 
 #nameSpot {
     display: none;
+    float: left;
 }
 
 #placeSpot {
