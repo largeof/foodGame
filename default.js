@@ -10,15 +10,20 @@ function itsLoaded()
     //select playerAmount
     document.getElementById("playerAmount").focus();
     document.getElementById("playerAmount").select();
+
+    enterSubmit('choicesPer', 'firstBtn');
 }
 
 function enterSubmit(textBox, pressedBtn) { //this will allow you to press enter as submit
     var input = document.getElementById(textBox); //textBox is the box of text that will activate the enter
     input.addEventListener("keyup", function(event) {
-      if (event.keyCode === 13) {
+      if (event.keyCode === 13 && 
+        document.activeElement.nodeName == 'TEXTAREA') 
+        
+        {
        event.preventDefault();
        document.getElementById(pressedBtn).click(); //pressedBtn is the button pressed
-      }
+        }
     });
 }
 

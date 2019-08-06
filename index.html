@@ -18,10 +18,6 @@
             <input type="button" value="SUBMIT" id="firstBtn" onclick="initialSubmit();"/>
         </form>
 
-        <script>
-            enterSubmit('choicesPer', 'firstBtn');
-        </script>
-
         <div id="nameDiv">
             <form id="nameForm">
                 <br>
@@ -37,7 +33,7 @@
         </div>
 
         <!-- onkeypress will avoid refreshing page -->
-        <form id="placeForm" onkeypress="return event.keyCode != 13">
+        <form id="placeForm" onSubmit="return false;">
         </form>
 
     </div>
