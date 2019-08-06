@@ -18,11 +18,11 @@ function enterSubmit(textBox, pressedBtn) { //this will allow you to press enter
     var input = document.getElementById(textBox); //textBox is the box of text that will activate the enter
     input.addEventListener("keyup", function(event) {
       if (event.keyCode === 13 && 
-        document.activeElement.nodeName == 'TEXTAREA') 
+        document.activeElement.tagName == 'INPUT') 
         
         {
-       event.preventDefault();
-       document.getElementById(pressedBtn).click(); //pressedBtn is the button pressed
+            event.preventDefault();
+            document.getElementById(pressedBtn).click(); //pressedBtn is the button pressed
         }
     });
 }
