@@ -25,10 +25,8 @@ function enterSubmit(textBox, pressedBtn) { //this will allow you to press enter
 function initialSubmit() //this is the button that submits player amount and choices per
 {
     //sets variables for elements i will be editing
-    var infoMsg = document.getElementById('info');
     var playerAmount = document.getElementById('playerAmount');
     var choicesPer = document.getElementById('choicesPer')
-    var next = document.getElementById('next');
     var nameDiv = document.getElementById('nameDiv');
 
     //set my global variables to the stuff user entered
@@ -66,7 +64,6 @@ function nameSubmit()
     var nameForm = document.getElementById('nameForm');
     var placeForm = document.getElementById('placeForm');
     var placeSpot = document.getElementById('placeSpot');
-    var placePrompt = document.getElementById('placeEnterDiv');
 
     for (let i = 1; i<=globPlayerCount; i++)
     {
@@ -88,8 +85,11 @@ function nameSubmit()
     placeForm.style.display = "block";
     placeSpot.style.display = "block";
 
-    //set placePrompt
-    placePrompt.innerHTML = names[0] + "'s turn: " + '<input type="text" id="placeInput"/> <br>';
+    //set placePrompt & placeBtn
+    placeForm.innerHTML = names[0] + "'s turn: " + '<input type="text" id="placeInput"/> <br>';
+    placeForm.innerHTML += '<input type="button" value="SUBMIT" id="placeBtn" onclick="placeSubmit();"/>';
+
+    enterSubmit('placeInput', 'placeBtn');
 
     //show nameSpot
     document.getElementById('nameSpot').style.display = "block";
@@ -104,7 +104,6 @@ function placeSubmit()
 
     var placeSpot = document.getElementById('placeSpot');
     var placeForm = document.getElementById('placeForm');
-    var placePrompt = document.getElementById('placeEnterDiv');
     var placeInput = document.getElementById('placeInput');
 
     //add to places array!
@@ -116,8 +115,12 @@ function placeSubmit()
     newPlace.innerHTML = placeCounter + '. ' + placeInput.value + ' ';
 
     placeSpot.appendChild(newPlace); //add p line
-    //set placePrompt
-    placePrompt.innerHTML = names[placeCounter%globPlayerCount] + "'s turn: " + '<input type="text" id="placeInput"/> <br>';
+    //set placePrompt & placeBtn
+    placeForm.innerHTML = names[placeCounter%globPlayerCount] + "'s turn: " + '<input type="text" id="placeInput"/> <br>';
+    placeForm.innerHTML += '<input type="button" value="SUBMIT" id="placeBtn" onclick="placeSubmit();"/>';
+
+    //press enter to submit
+    enterSubmit('placeInput', 'placeBtn');
 
     placeCounter++;
 
@@ -134,7 +137,7 @@ function placeSubmit()
         placeCounter=1;
         for (placeCounter; placeCounter<=globPlacesPerPlayer*globPlayerCount; placeCounter++)
         {
-            var newButton = '<input type="image" id = trash' + placeCounter + ' alt="trash" src="trash.png" height=19.6px width=13.4px onclick="trashButton(' +placeCounter+ ');"/> </input>'
+            var newButton = '<input type="image" id = trash' + placeCounter + ' alt="trash" src="trash.png" height=19.6px width=13.4px onclick="trashButton(' +placeCounter+ ');">'
             //changed it to input because no one uses just buttons hehe
 
             document.getElementById('place'+placeCounter).innerHTML+=newButton; // adds button to line
@@ -153,7 +156,7 @@ function setBanWording(newBanner)
     {
         if (i==newBanner)
         {
-            document.getElementById("nameP"+i).innerHTML = i + ". " + names[i-1] + " <= Currently banning";
+            document.getElementById("nameP"+i).innerHTML = '<B>' + i + ". " + names[i-1] + '</B>';
         }
         else
         {
@@ -209,7 +212,19 @@ function trashButton(placeCount)
 
         //remove currently banning point
         setBanWording(-1);
+        
+        //change winner name color
+        setWinnerWording(finalWinner%globPlayerCount);
     }
+}
 
-
+function setWinnerWording(newWinner)
+{
+    console.log(names);
+    if (newWinner==0){
+        setWinnerWording(globPlayerCount);
+    }
+    else {
+        document.getElementById("nameP"+newWinner).innerHTML = '<B>' + newWinner + ". " + names[newWinner-1] + '</B>';
+    }
 }
