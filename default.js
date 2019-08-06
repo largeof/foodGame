@@ -17,10 +17,11 @@ function itsLoaded()
 function enterSubmit(textBox, pressedBtn) { //this will allow you to press enter as submit
     var input = document.getElementById(textBox); //textBox is the box of text that will activate the enter
     input.addEventListener("keyup", function(event) {
-      if (event.keyCode === 13 && 
-        document.activeElement.tagName == 'INPUT') 
+      if (event.keyCode === 13 && document.activeElement==input) 
         
         {
+            console.log(document.activeElement.id);
+            console.log("triggered with textBox" + textBox + "and pressedBtn" + pressedBtn);
             event.preventDefault();
             document.getElementById(pressedBtn).click(); //pressedBtn is the button pressed
         }
