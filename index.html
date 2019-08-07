@@ -5,18 +5,19 @@
 <link rel="shortcut icon" href="icon.ico"/>
 <link href="default.css" rel="stylesheet" type="text/css">
 <meta charset="utf-8"/>
+<script type="text/javascript" src="gameManager.js"></script>
 <script type="text/javascript" src="default.js"></script>
 </head>
 <body onload="itsLoaded()">
     <div id="main">
         <p id="foodTitle">Welcome to Food Game</p>
         <br>
-        <form id="initialMenu">
+        <div id="initialMenu">
             <br>
             Player amount: <input type="text" class="firstBox" id="playerAmount"/><br><br>
             Choices per player: <input type="text" class="firstBox" id="choicesPer"/><br><br>
             <input type="button" value="SUBMIT" id="firstBtn" onclick="initialSubmit();"/>
-        </form>
+        </div>
 
         <div id="nameDiv">
             <form id="nameForm">
@@ -32,10 +33,8 @@
             <br> Places: <br><br>
         </div>
 
-        <!-- onkeypress will avoid refreshing page -->
-        <form id="placeForm" onSubmit="return false;">
-        </form>
-
+        <div id="placeForm">
+        </div>
     </div>
 </body>
 </html>
