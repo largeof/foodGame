@@ -29,6 +29,7 @@ p {
 }
 #foodTitle {
     font-size: 30px;
+    padding-bottom: 10px;
 }
 input[type="text"] {
     font-size: 12px;
@@ -65,7 +66,6 @@ input[type="button"]:hover {
 
 #nameSpot {
     display: none;
-    float: left;
 }
 
 #placeSpot {
