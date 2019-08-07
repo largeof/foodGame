@@ -197,7 +197,7 @@ function trashButton(placeCount)
             if (document.getElementById("trash"+i).style.display!="none")
             {
                 //we have found winner!
-                document.getElementById("place"+i).innerHTML = '<b>' + document.getElementById('place'+i).innerHTML + '</b>'
+                document.getElementById("place"+i).innerHTML = '<img src="crown.png" alt="crown" height="19.6" width="19.6"></img> ' + '<b>' + document.getElementById('place'+i).innerHTML + '</b>'
                 finalWinner=i;
                 document.getElementById("trash"+i).style.display="none";
 
@@ -206,7 +206,7 @@ function trashButton(placeCount)
         //display the WINNER
         let winText = document.createElement("P");
         //0 index so finalWinner-1
-        winText.innerHTML = 'The winning place is <b>' + currentGame.places[finalWinner-1] + '</b>!';
+        winText.innerHTML = '<br> The winning place is <b>' + currentGame.places[finalWinner-1] + '</b>!';
 
         document.getElementById('placeSpot').appendChild(winText);
 
@@ -224,6 +224,6 @@ function setWinnerWording(newWinner)
         setWinnerWording(currentGame.playerCount);
     }
     else {
-        document.getElementById("nameP"+newWinner).innerHTML = '<B>' + newWinner + ". " + currentGame.names[newWinner-1] + '</B>';
+        document.getElementById("nameP"+newWinner).innerHTML = '<img src="crown.png" alt="crown" height="19.6" width="19.6"></img> ' + '<B>' + newWinner + ". " + currentGame.names[newWinner-1] + '</B>';
     }
 }
