@@ -14,8 +14,8 @@
         <p id="foodTitle">Welcome to Food Game</p>
         <div id="initialMenu">
             <br>
-            Player amount: <input type="text" class="firstBox" id="playerAmount"/><br><br>
-            Choices per player: <input type="text" class="firstBox" id="choicesPer"/><br><br>
+            Player amount: <input type="number" class="firstBox" id="playerAmount" name="quantity" min="2" max="10"/><br><br>
+            Choices per player: <input type="number" class="firstBox" id="choicesPer" name="quantity" min="1" max="3"/><br><br>
             <input type="button" value="SUBMIT" id="firstBtn" onclick="initialSubmit();"/>
         </div>
 
