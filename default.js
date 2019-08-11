@@ -13,6 +13,20 @@ function enterSubmit(textBox, pressedBtn)
     } );
 }
 
+function enterText(textBox1, textBox2) 
+{ //this will allow you to press enter as submit
+    var input = document.getElementById(textBox1); //textBox1 is the box of text that will activate the enter
+    input.addEventListener("keydown", function(event) 
+    {
+        if (event.keyCode === 13) 
+        {
+            event.preventDefault();
+            document.getElementById(textBox2).focus(); //textbox2 is the focused textbox
+            document.getElementById(textBox2).select(); //textbox2 is the selected textbox
+        }
+    } );
+}
+
 function itsLoaded() //this function gets called once page is loaded
 {
     //select playerAmount on initial screen to allow for editing right away
@@ -20,6 +34,7 @@ function itsLoaded() //this function gets called once page is loaded
     document.getElementById("playerAmount").select();
 
     //listen for enter on initial button
+    enterText('playerAmount', 'choicesPer');
     enterSubmit('choicesPer', 'firstBtn');
 }
 
@@ -50,11 +65,11 @@ function initialSubmit() //this is the button that submits player amount and cho
     //add button to submit name form at the end!
     nameForm.innerHTML += '<input type="button" id=playerBtn value="SUBMIT" onclick="nameSubmit();"/>'
 
-    //listen for enter on next page and select new nameBox
-    enterSubmit('nameBox'+currentGame.playerCount+'', 'playerBtn');
     document.getElementById("nameBox1").focus();
     document.getElementById("nameBox1").select();
 
+    //listen for enter on next page and select new nameBox
+    enterSubmit('nameBox'+currentGame.playerCount+'', 'playerBtn');
 }
 
 function nameSubmit()

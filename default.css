@@ -31,6 +31,17 @@ p {
     font-size: 30px;
     padding-bottom: 10px;
 }
+input[type="number"] {
+    font-size: 12px;
+    padding: 5px 10px;
+    border: 1px solid lightgray;
+    transition: 0.5s;
+    border-radius: 4px;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;   
+}
+input[type="number"]:hover{
+    border-color: black;    
+}
 input[type="text"] {
     font-size: 12px;
     padding: 5px 10px;
@@ -41,10 +52,6 @@ input[type="text"] {
 }
 input[type="text"]:hover{
     border-color: black;    
-}
-/*this first box class was made for numeric input boxes*/
-.firstBox {
-    width: 3%;
 }
 input[type="button"] {
     font-size: 12px;
