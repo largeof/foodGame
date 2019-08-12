@@ -49,27 +49,49 @@ function initialSubmit() //this is the button that submits player amount and cho
     currentGame.playerCount = playerAmount.value;
     currentGame.placesPerPlayer = choicesPer.value;
 
-    //hide initialMenu, show name entering screen, and change title
-    initialMenu.style.display = "none";
-    nameDiv.style.display = "block";
-    foodTitle.innerHTML = "Food Game";
+    if (currentGame.playerCount > 1 && currentGame.playerCount < 11 && currentGame.placesPerPlayer > 0 && currentGame.placesPerPlayer < 4) {
+        //hide initialMenu, show name entering screen, and change title
+        initialMenu.style.display = "none";
+        nameDiv.style.display = "block";
+        foodTitle.innerHTML = "Food Game";
 
-    //make input for every player name
-    var nameForm = document.getElementById('nameForm');
-    for (let i = 1; i<=currentGame.playerCount; i++)
-    {
-        //makes an input box for every name with the id = nameBox[i]
-        nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="nameBox' + i + '"/> <br><br>';
+        //make input for every player name
+        var nameForm = document.getElementById('nameForm');
+        for (let i = 1; i<=currentGame.playerCount; i++)
+        {
+            //makes an input box for every name with the id = nameBox[i]
+            nameForm.innerHTML += 'player ' + i + ' name: ' + '<input type="text" id="nameBox' + i + '"/> <br><br>';
+        }
+        
+        //add button to submit name form at the end!
+        nameForm.innerHTML += '<input type="button" id=playerBtn value="SUBMIT" onclick="nameSubmit();"/>'
+
+        document.getElementById("nameBox1").focus();
+        document.getElementById("nameBox1").select();
+
+        //listen for enter on next page and select new nameBox
+        enterSubmit('nameBox'+currentGame.playerCount+'', 'playerBtn');
     }
-    
-    //add button to submit name form at the end!
-    nameForm.innerHTML += '<input type="button" id=playerBtn value="SUBMIT" onclick="nameSubmit();"/>'
 
-    document.getElementById("nameBox1").focus();
-    document.getElementById("nameBox1").select();
+    else if (currentGame.playerCount == 1){
+        alert ("Are you really so indecisive that you are playing food game by yourself?");
+    }
 
-    //listen for enter on next page and select new nameBox
-    enterSubmit('nameBox'+currentGame.playerCount+'', 'playerBtn');
+    else if (currentGame.playerCount > 10){
+        alert ("TOO MANY PEOPLE! Just order pizza or something.");
+    }
+
+    else if (currentGame.placesPerPlayer == 0){
+        alert ("Okay the game will literally not work if you do that.");
+    }
+
+    else if (currentGame.placesPerPlayer > 3){
+        alert ("TOO MANY PLACES! This game will never end if you do this.");
+    }
+
+    else {
+        alert ("Input not accept. Please try again!")
+    }
 }
 
 function nameSubmit()
