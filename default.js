@@ -1,32 +1,5 @@
 let currentGame = new gameManager(); //has all data for current game 
 
-function enterSubmit(textBox, pressedBtn) 
-{ //this will allow you to press enter as submit
-    var input = document.getElementById(textBox); //textBox is the box of text that will activate the enter
-    input.addEventListener("keydown", function(event) 
-    {
-        if (event.keyCode === 13) 
-        {
-            event.preventDefault();
-            document.getElementById(pressedBtn).click(); //pressedBtn is the button pressed
-        }
-    } );
-}
-
-function enterText(textBox1, textBox2) 
-{ //this will allow you to press enter as submit
-    var input = document.getElementById(textBox1); //textBox1 is the box of text that will activate the enter
-    input.addEventListener("keydown", function(event) 
-    {
-        if (event.keyCode === 13) 
-        {
-            event.preventDefault();
-            document.getElementById(textBox2).focus(); //textbox2 is the focused textbox
-            document.getElementById(textBox2).select(); //textbox2 is the selected textbox
-        }
-    } );
-}
-
 function itsLoaded() //this function gets called once page is loaded
 {
     //select playerAmount on initial screen to allow for editing right away
@@ -49,7 +22,7 @@ function initialSubmit() //this is the button that submits player amount and cho
     currentGame.playerCount = playerAmount.value;
     currentGame.placesPerPlayer = choicesPer.value;
 
-    if (currentGame.playerCount > 1 && currentGame.playerCount < 11 && currentGame.placesPerPlayer > 0 && currentGame.placesPerPlayer < 4) {
+    if (homeCleansing(currentGame.playerCount, currentGame.placesPerPlayer)) {
         //hide initialMenu, show name entering screen, and change title
         initialMenu.style.display = "none";
         nameDiv.style.display = "block";
@@ -71,26 +44,6 @@ function initialSubmit() //this is the button that submits player amount and cho
 
         //listen for enter on next page and select new nameBox
         enterSubmit('nameBox'+currentGame.playerCount+'', 'playerBtn');
-    }
-
-    else if (currentGame.playerCount == 1){
-        alert ("Are you really so indecisive that you are playing food game by yourself?");
-    }
-
-    else if (currentGame.playerCount > 10){
-        alert ("TOO MANY PEOPLE! Just order pizza or something.");
-    }
-
-    else if (currentGame.placesPerPlayer == 0){
-        alert ("Okay the game will literally not work if you do that.");
-    }
-
-    else if (currentGame.placesPerPlayer > 3){
-        alert ("TOO MANY PLACES! This game will never end if you do this.");
-    }
-
-    else {
-        alert ("Input not accept. Please try again!")
     }
 }
 
