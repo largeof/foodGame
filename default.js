@@ -77,7 +77,7 @@ function nameSubmit()
 
     //set placePrompt & placeBtn
     placeForm.innerHTML = currentGame.names[0] + "'s turn: " + '<input type="text" id="placeInput"/> <br>';
-    placeForm.innerHTML += '<input type="button" value="SUBMIT" id="placeBtn" onclick="placeSubmit();"/>';
+    placeForm.innerHTML += '<br><input type="button" value="SUBMIT" id="placeBtn" onclick="placeSubmit();"/>';
 
     //listen for enter on new button
     enterSubmit('placeInput', 'placeBtn');
@@ -108,7 +108,7 @@ function placeSubmit()
     placeSpot.appendChild(newPlace); //add p line
     //set placePrompt & placeBtn
     placeForm.innerHTML = currentGame.names[currentGame.placeCounter%currentGame.playerCount] + "'s turn: " + '<input type="text" id="placeInput"/> <br>';
-    placeForm.innerHTML += '<input type="button" value="SUBMIT" id="placeBtn" onclick="placeSubmit();"/>';
+    placeForm.innerHTML += '<br><input type="button" value="SUBMIT" id="placeBtn" onclick="placeSubmit();"/>';
 
     //press enter to submit
     enterSubmit('placeInput', 'placeBtn');
