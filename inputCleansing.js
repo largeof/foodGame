@@ -19,7 +19,7 @@ function homeCleansing(a,b){ //where a = people and b = places
     }
 
     else {
-        alert ("Input not accept. Please try again!")
+        alert ("Input not accepted. Please try again!")
     }
     return false;
 }
