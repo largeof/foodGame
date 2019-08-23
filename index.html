@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
 <title>Food Game</title>
-<link rel="shortcut icon" href="icon.ico"/>
-<link href="default.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="pictures/icon.ico"/>
+<link rel="stylesheet" href="css/default.css" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand&display=swap">
+<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<script type="text/javascript" src="gameManager.js"></script>
-<script type="text/javascript" src="enterButton.js"></script>
-<script type="text/javascript" src="inputCleansing.js"></script>
-<script type="text/javascript" src="default.js"></script>
+<script type="text/javascript" src="js/gameManager.js"></script>
+<script type="text/javascript" src="js/enterButton.js"></script>
+<script type="text/javascript" src="js/inputCleansing.js"></script>
+<script type="text/javascript" src="js/default.js"></script>
 </head>
 <body onload="itsLoaded()">
     <div id="main">
@@ -27,15 +29,19 @@
             </form>
         </div>
 
-        <div id="nameSpot">
-            <br> Players: <br>
-        </div>
+        <div class='row'>
+            <div id="nameSpot" class="col-md-4">
+                <br> Players: <br>
+            </div>
 
-        <div id="placeSpot">
-            <br> Places: <br>
-        </div>
+            <div class="col-md-8"></div>
+                <div id="placeSpot">
+                    <br> Places: <br>
+                </div>
 
-        <div id="placeForm">
+                <div id="placeForm">
+                </div>
+            </div>
         </div>
     </div>
 </body>

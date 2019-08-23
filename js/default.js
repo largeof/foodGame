@@ -128,7 +128,7 @@ function placeSubmit()
         currentGame.placeCounter=1;
         for (currentGame.placeCounter; currentGame.placeCounter<=currentGame.placesPerPlayer*currentGame.playerCount; currentGame.placeCounter++)
         {
-            var newButton = '<input type="image" id = trash' + currentGame.placeCounter + ' alt="trash" src="trash.png" height=19.6px width=13.4px onclick="trashButton(' +currentGame.placeCounter+ ');">'
+            var newButton = '<input type="image" id = trash' + currentGame.placeCounter + ' alt="trash" src="pictures/trash.png" height=19.6px width=13.4px onclick="trashButton(' +currentGame.placeCounter+ ');">'
             //changed it to input because no one uses just buttons hehe
 
             document.getElementById('place'+currentGame.placeCounter).innerHTML+=newButton; // adds button to line
@@ -187,7 +187,8 @@ function trashButton(placeCount)
             if (document.getElementById("trash"+i).style.display!="none")
             {
                 //we have found winner!
-                document.getElementById("place"+i).innerHTML = '<img src="crown.png" alt="crown" height="19.6" width="19.6"></img> ' + '<b>' + document.getElementById('place'+i).innerHTML + '</b>'
+                document.getElementById("place"+i).innerHTML = '<img src="pictures/crown.png" alt="crown" height="19.6" width="19.6"></img>' + document.getElementById("place"+i).innerHTML;
+                document.getElementById('place'+i).style.color= "red";
                 finalWinner=i;
                 document.getElementById("trash"+i).style.display="none";
 
@@ -214,6 +215,7 @@ function setWinnerWording(newWinner)
         setWinnerWording(currentGame.playerCount);
     }
     else {
-        document.getElementById("nameP"+newWinner).innerHTML = '<img src="crown.png" alt="crown" height="19.6" width="19.6"></img> ' + '<B>' + newWinner + ". " + currentGame.names[newWinner-1] + '</B>';
+        document.getElementById("nameP"+newWinner).innerHTML = '<img src="pictures/crown.png" alt="crown" height="19.6" width="19.6"></img> ' + '<B>' + newWinner + ". " + currentGame.names[newWinner-1] + '</B>';
+        document.getElementById("nameP"+newWinner).style.color= "red";
     }
 }
