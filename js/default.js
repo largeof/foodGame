@@ -147,10 +147,12 @@ function setBanWording(newBanner)
         if (i==newBanner)
         {
             document.getElementById("nameP"+i).innerHTML = '<B>' + i + ". " + currentGame.names[i-1] + '</B>';
+            document.getElementById("nameP"+i).style.color = "red";
         }
         else
         {
             document.getElementById("nameP"+i).innerHTML = i + ". " + currentGame.names[i-1];
+            document.getElementById("nameP"+i).style.color = "black";
         }
     }
 }
