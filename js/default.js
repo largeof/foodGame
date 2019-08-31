@@ -1,32 +1,5 @@
 let currentGame = new gameManager(); //has all data for current game 
 
-function enterSubmit(textBox, pressedBtn) 
-{ //this will allow you to press enter as submit
-    var input = document.getElementById(textBox); //textBox is the box of text that will activate the enter
-    input.addEventListener("keydown", function(event) 
-    {
-        if (event.keyCode === 13) 
-        {
-            event.preventDefault();
-            document.getElementById(pressedBtn).click(); //pressedBtn is the button pressed
-        }
-    } );
-}
-
-function enterText(textBox1, textBox2) 
-{ //this will allow you to press enter as submit
-    var input = document.getElementById(textBox1); //textBox1 is the box of text that will activate the enter
-    input.addEventListener("keydown", function(event) 
-    {
-        if (event.keyCode === 13) 
-        {
-            event.preventDefault();
-            document.getElementById(textBox2).focus(); //textbox2 is the focused textbox
-            document.getElementById(textBox2).select(); //textbox2 is the selected textbox
-        }
-    } );
-}
-
 function itsLoaded() //this function gets called once page is loaded
 {
     //select playerAmount on initial screen to allow for editing right away
@@ -49,7 +22,7 @@ function initialSubmit() //this is the button that submits player amount and cho
     currentGame.playerCount = playerAmount.value;
     currentGame.placesPerPlayer = choicesPer.value;
 
-    if (currentGame.playerCount > 1 && currentGame.playerCount < 11 && currentGame.placesPerPlayer > 0 && currentGame.placesPerPlayer < 4) {
+    if (homeCleansing(currentGame.playerCount, currentGame.placesPerPlayer)) {
         //hide initialMenu, show name entering screen, and change title
         initialMenu.style.display = "none";
         nameDiv.style.display = "block";
@@ -71,26 +44,6 @@ function initialSubmit() //this is the button that submits player amount and cho
 
         //listen for enter on next page and select new nameBox
         enterSubmit('nameBox'+currentGame.playerCount+'', 'playerBtn');
-    }
-
-    else if (currentGame.playerCount == 1){
-        alert ("Are you really so indecisive that you are playing food game by yourself?");
-    }
-
-    else if (currentGame.playerCount > 10){
-        alert ("TOO MANY PEOPLE! Just order pizza or something.");
-    }
-
-    else if (currentGame.placesPerPlayer == 0){
-        alert ("Okay the game will literally not work if you do that.");
-    }
-
-    else if (currentGame.placesPerPlayer > 3){
-        alert ("TOO MANY PLACES! This game will never end if you do this.");
-    }
-
-    else {
-        alert ("Input not accept. Please try again!")
     }
 }
 
@@ -124,7 +77,7 @@ function nameSubmit()
 
     //set placePrompt & placeBtn
     placeForm.innerHTML = currentGame.names[0] + "'s turn: " + '<input type="text" id="placeInput"/> <br>';
-    placeForm.innerHTML += '<input type="button" value="SUBMIT" id="placeBtn" onclick="placeSubmit();"/>';
+    placeForm.innerHTML += '<br><input type="button" value="SUBMIT" id="placeBtn" onclick="placeSubmit();"/>';
 
     //listen for enter on new button
     enterSubmit('placeInput', 'placeBtn');
@@ -155,7 +108,7 @@ function placeSubmit()
     placeSpot.appendChild(newPlace); //add p line
     //set placePrompt & placeBtn
     placeForm.innerHTML = currentGame.names[currentGame.placeCounter%currentGame.playerCount] + "'s turn: " + '<input type="text" id="placeInput"/> <br>';
-    placeForm.innerHTML += '<input type="button" value="SUBMIT" id="placeBtn" onclick="placeSubmit();"/>';
+    placeForm.innerHTML += '<br><input type="button" value="SUBMIT" id="placeBtn" onclick="placeSubmit();"/>';
 
     //press enter to submit
     enterSubmit('placeInput', 'placeBtn');
@@ -175,7 +128,7 @@ function placeSubmit()
         currentGame.placeCounter=1;
         for (currentGame.placeCounter; currentGame.placeCounter<=currentGame.placesPerPlayer*currentGame.playerCount; currentGame.placeCounter++)
         {
-            var newButton = '<input type="image" id = trash' + currentGame.placeCounter + ' alt="trash" src="trash.png" height=19.6px width=13.4px onclick="trashButton(' +currentGame.placeCounter+ ');">'
+            var newButton = '<input type="image" id = trash' + currentGame.placeCounter + ' alt="trash" src="pictures/trash.png" height=19.6px width=13.4px onclick="trashButton(' +currentGame.placeCounter+ ');">'
             //changed it to input because no one uses just buttons hehe
 
             document.getElementById('place'+currentGame.placeCounter).innerHTML+=newButton; // adds button to line
@@ -194,10 +147,12 @@ function setBanWording(newBanner)
         if (i==newBanner)
         {
             document.getElementById("nameP"+i).innerHTML = '<B>' + i + ". " + currentGame.names[i-1] + '</B>';
+            document.getElementById("nameP"+i).style.color = "red";
         }
         else
         {
             document.getElementById("nameP"+i).innerHTML = i + ". " + currentGame.names[i-1];
+            document.getElementById("nameP"+i).style.color = "black";
         }
     }
 }
@@ -234,7 +189,8 @@ function trashButton(placeCount)
             if (document.getElementById("trash"+i).style.display!="none")
             {
                 //we have found winner!
-                document.getElementById("place"+i).innerHTML = '<img src="crown.png" alt="crown" height="19.6" width="19.6"></img> ' + '<b>' + document.getElementById('place'+i).innerHTML + '</b>'
+                document.getElementById("place"+i).innerHTML = '<img src="pictures/crown.png" alt="crown" height="19.6" width="19.6"></img>' + document.getElementById("place"+i).innerHTML;
+                document.getElementById('place'+i).style.color= "red";
                 finalWinner=i;
                 document.getElementById("trash"+i).style.display="none";
 
@@ -261,6 +217,7 @@ function setWinnerWording(newWinner)
         setWinnerWording(currentGame.playerCount);
     }
     else {
-        document.getElementById("nameP"+newWinner).innerHTML = '<img src="crown.png" alt="crown" height="19.6" width="19.6"></img> ' + '<B>' + newWinner + ". " + currentGame.names[newWinner-1] + '</B>';
+        document.getElementById("nameP"+newWinner).innerHTML = '<img src="pictures/crown.png" alt="crown" height="19.6" width="19.6"></img> ' + '<B>' + newWinner + ". " + currentGame.names[newWinner-1] + '</B>';
+        document.getElementById("nameP"+newWinner).style.color= "red";
     }
 }
