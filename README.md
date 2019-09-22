@@ -1,4 +1,4 @@
 # foodGame
-Web application to find out where to eat with a group of friends.
+Static webpage to find out where to eat with a group.
 
-[Try it out](onsclom.github.io/foodGame-static)
+https://onsclom.github.io/foodGame-static/
